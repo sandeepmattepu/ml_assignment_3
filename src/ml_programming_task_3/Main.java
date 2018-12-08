@@ -97,6 +97,7 @@ public class Main
 			}
 			
 			writer.close();
+			System.out.println("Output is produced at " + locationToSave);
 		} 
 		catch (Exception e) 
 		{
