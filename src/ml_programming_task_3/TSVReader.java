@@ -54,7 +54,7 @@ public class TSVReader
 		return numberOfInputValues;
 	}
 	
-	// In TSV file string of each tab separated should be either alphabet or double value
+	// In TSV file each value is separated by a double value
 	private boolean isValidInputString(String value)
 	{
 		boolean result = true;
