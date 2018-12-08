@@ -10,7 +10,7 @@ import ml_programming_task_3.TrainingExample;
 public class TrainingExampleTest 
 {
 	private TrainingExample trainingExample;
-	private double classValue;
+	private int classValue;
 	private double[] inputValues;
 
 	@Before

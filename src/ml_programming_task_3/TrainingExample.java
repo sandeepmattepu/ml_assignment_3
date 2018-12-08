@@ -2,16 +2,16 @@ package ml_programming_task_3;
 
 public class TrainingExample 
 {
-	private final double classValue;
+	private final int classValue;
 	private final double[] inputValues;
 	
-	public TrainingExample(double ClassValue, double[] InputValues)
+	public TrainingExample(int ClassValue, double[] InputValues)
 	{
 		classValue = ClassValue;
 		inputValues = InputValues;
 	}
 	
-	public double getClassValue()
+	public int getClassValue()
 	{
 		return classValue;
 	}
