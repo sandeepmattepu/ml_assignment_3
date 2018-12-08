@@ -15,21 +15,35 @@ public class Perceptron
 	
 	public void setWeightAt(int index, double value)
 	{
-		
+		weights[index] = value;
 	}
 	
 	public double[] getWeights()
 	{
-		return null;
+		return weights.clone();
 	}
 	
 	public double getWeightAt(int index)
 	{
-		return -1000;
+		return weights[index];
 	}
 	
 	public int getFuctionValue(TrainingExample example)
 	{
-		return -100;
+		int functionValue;
+		double linearResult = 0;
+		for(int i = 0; i < weights.length; i++)
+		{
+			if(i == 0)		// Weight w0 is always multiplied with 1
+			{
+				linearResult += weights[i];
+			}
+			else
+			{
+				linearResult += (weights[i] * example.getInputValueAt(i-1));
+			}
+		}
+		functionValue = linearResult > 0 ? 1 : 0;
+		return functionValue;
 	}
 }

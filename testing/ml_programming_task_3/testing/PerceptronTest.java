@@ -32,6 +32,16 @@ public class PerceptronTest
 	}
 
 	@Test
+	public void testGetWeights() 
+	{
+		double[] weightsFromPerceptron = perceptron.getWeights();
+		for(int i = 0; i < weightsFromPerceptron.length; i++)
+		{
+			assertEquals(weightsFromPerceptron[i], weightValues[i], 0.0001);
+		}
+	}
+
+	@Test
 	public void testSetWeightAt() 
 	{
 		double newValue = 12.45;
@@ -40,18 +50,12 @@ public class PerceptronTest
 	}
 
 	@Test
-	public void testGetWeights() 
+	public void testFuctionValue() 
 	{
 		perceptron.setWeightAt(0, 1);
 		perceptron.setWeightAt(1, 1);
 		perceptron.setWeightAt(2, 1);
 		assertEquals(1, perceptron.getFuctionValue(example));
-	}
-
-	@Test
-	public void testFuctionValue() 
-	{
-		fail("Not yet implemented");
 	}
 
 }
