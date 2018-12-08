@@ -46,4 +46,9 @@ public class Perceptron
 		functionValue = linearResult > 0 ? 1 : 0;
 		return functionValue;
 	}
+	
+	public int getDimensionalityOfPerceptronEquation()
+	{
+		return (weights.length - 1);
+	}
 }

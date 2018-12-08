@@ -20,4 +20,9 @@ public class TrainingExample
 	{
 		return inputValues[indexOfInputValue];
 	}
+	
+	public int numberOfInputs()
+	{
+		return inputValues.length;
+	}
 }
