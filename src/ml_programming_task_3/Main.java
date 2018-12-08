@@ -1,5 +1,7 @@
 package ml_programming_task_3;
 
+import java.io.PrintWriter;
+
 public class Main 
 {
 
@@ -33,20 +35,72 @@ public class Main
 					{
 						iterations = Integer.valueOf(args[2]);
 					}
-					catch(Exception e) {}
+					catch(Exception e) 
+					{
+						e.printStackTrace();
+					}
 				}
 				
 				// Training perceptron
 				DeltaRule deltaRule = new DeltaRule(examples, perceptron, iterations);
-				int[] errors = deltaRule.trainPerceptron(true);
+				int[] errorsWithConstantRate = deltaRule.trainPerceptron(false);
 				
-				for(int i = 0; i < errors.length; i++)
+				// Initialize all weights to 0
+				for(int i = 0; i < weightsOfPerceptron.length; i++)
 				{
-					System.out.print(errors[i]);
-					System.out.print("\t");
+					weightsOfPerceptron[i] = 0;
+				}
+				perceptron = new Perceptron(weightsOfPerceptron);
+				deltaRule = new DeltaRule(examples, perceptron, iterations);
+				int[] errorsWithAnnealing = deltaRule.trainPerceptron(true);
+				writeErrorsToFile(args[1], errorsWithConstantRate, errorsWithAnnealing);
+			}
+			catch(Exception e) 
+			{
+				e.printStackTrace();
+			}
+		}
+	}
+	
+	public static void writeErrorsToFile(String locationToSave, int[] withConstantError, int[] withAnnealing)
+	{
+		try 
+		{
+			PrintWriter writer = new PrintWriter(locationToSave);
+			
+			// write errors with constant learning rate
+			for(int i = 0; i < withConstantError.length; i++)
+			{
+				writer.print(withConstantError[i]);
+				if(i == (withConstantError.length - 1))
+				{
+					writer.println();
+				}
+				else
+				{
+					writer.print("\t");
 				}
 			}
-			catch(Exception e) {}
+			
+			// write errors with annealing learning rate
+			for(int i = 0; i < withAnnealing.length; i++)
+			{
+				writer.print(withAnnealing[i]);
+				if(i == (withAnnealing.length - 1))
+				{
+					writer.println();
+				}
+				else
+				{
+					writer.print("\t");
+				}
+			}
+			
+			writer.close();
+		} 
+		catch (Exception e) 
+		{
+			e.printStackTrace();
 		}
 	}
 
